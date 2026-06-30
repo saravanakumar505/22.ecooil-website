@@ -1,0 +1,17 @@
+{
+  "name": "ecooil-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx tailwindcss@3 -i ./assets/css/input.css -o ./assets/css/output.css --minify",
+    "watch:css": "npx tailwindcss@3 -i ./assets/css/input.css -o ./assets/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^4.3.1"
+  }
+}

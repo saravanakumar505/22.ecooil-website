@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | EcoOil Platform</title>
+
+    <script>
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        const dir = localStorage.getItem('dir');
+        if (dir) {
+            document.documentElement.setAttribute('dir', dir);
+            document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/output.css">
+</head>
+
+<body
+    class="font-sans antialiased text-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-200 transition-colors duration-300 overflow-x-hidden max-w-[100vw]">
+
+    <!-- Navigation (Simplified for brevity but identical logic to index) -->
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed w-full z-40 transition-all duration-300 bg-white/95 dark:bg-slate-900/95 text-slate-800 dark:text-white py-4 shadow-sm backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-12">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../index.html" class="flex justify-center md:justify-start items-center gap-2">
+                        <i data-lucide="droplet" class="text-emerald-500 h-8 w-8"></i>
+                        <span
+                            class="font-display font-bold text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white">Eco<span
+                                class="text-emerald-500">Oil</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 rtl:space-x-reverse items-center font-medium">
+                    <!-- Home Dropdown Trigger -->
+                    <div class="relative group nav-item">
+                        <button
+                            class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                            Home <i data-lucide="chevron-down"
+                                class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Dropdown Content -->
+                        <div
+                            class="absolute top-full start-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-2 glass">
+                            <a href="../index.html"
+                                class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
+                                data-page="index.html">
+                                <span class="active-icon hidden"><i data-lucide="check"
+                                        class="h-4 w-4 text-emerald-500"></i></span> Home 1
+                            </a>
+                            <a href="../pages/home2.html"
+                                class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
+                                data-page="home2.html">
+                                <span class="active-icon hidden"><i data-lucide="check"
+                                        class="h-4 w-4 text-emerald-500"></i></span> Home 2
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="../pages/about.html" class="nav-link nav-item transition-colors hover:text-emerald-500"
+                        data-page="about.html">About</a>
+
+                    <!-- Mega Dropdown Trigger -->
+                    <div class="relative group nav-item">
+                        <button
+                            class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                            Services <i data-lucide="chevron-down"
+                                class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Dropdown Content -->
+                        <div
+                            class="absolute top-full start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-6 glass">
+                            <div class="flex flex-col gap-2">
+                                <a href="../pages/services.html"
+                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                                    data-page="services.html">
+                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
+                                            data-lucide="settings" class="h-4 w-4 text-emerald-500"></i> Engine Oil
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Full synthetic fluid
+                                        exchange.</p>
+                                </a>
+                                <a href="../pages/recycling.html"
+                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                                    data-page="recycling.html">
+                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
+                                            data-lucide="recycle" class="h-4 w-4 text-emerald-500"></i> Recycling</div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Closed-loop EPA
+                                        compliance.</p>
+                                </a>
+                                <a href="../pages/fleet.html" class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors " data-page="fleet.html">
+                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
+                                            data-lucide="truck" class="h-4 w-4 text-emerald-500"></i> Fleet Solutions
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">B2B commercial programs.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="../pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="pricing.html">Pricing</a>
+                    <a href="../pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="contact.html">Contact</a>
+
+                    <!-- Tools -->
+                    <div class="flex items-center gap-1 sm:gap-2 ms-2 sm:ms-4 border-s border-slate-200 dark:border-slate-700 ps-2 sm:ps-4">
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors" title="Toggle Theme">
+                            <i data-lucide="moon" class="h-5 w-5 hidden dark:block text-slate-300"></i>
+                            <i data-lucide="sun" class="h-5 w-5 block dark:hidden text-amber-500"></i>
+                        </button>
+                        <button id="rtl-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors font-bold text-sm" title="Toggle RTL">
+                            RTL
+                        </button>
+                    </div>
+
+                    <a href="../pages/dashboard/index.html" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-emerald-500/30 hover:-translate-y-0.5">Dashboard</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button id="rtl-toggle-mobile" class="p-2 font-bold text-sm">RTL</button>
+                    <button id="theme-toggle-mobile" class="p-2">
+                        <i data-lucide="moon" class="h-5 w-5 hidden dark:block text-slate-300"></i>
+                        <i data-lucide="sun" class="h-5 w-5 block dark:hidden text-amber-500"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden glass mt-2 mx-4 rounded-2xl p-4 shadow-xl text-slate-800 dark:text-white border border-slate-100 dark:border-slate-700">
+            <div class="flex flex-col space-y-4 font-medium">
+                <!-- Home Accordion -->
+                <div class="flex flex-col space-y-2 nav-item">
+                    <button class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        Home <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                    </button>
+                    <div class="hidden flex flex-col ps-4 space-y-3 mt-2 border-s-2 border-emerald-500/20">
+                        <a href="../index.html" class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2" data-page="index.html">
+                            <span class="active-icon hidden"><i data-lucide="check" class="h-4 w-4"></i></span> Home 1
+                        </a>
+                        <a href="../pages/home2.html" class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2" data-page="home2.html">
+                            <span class="active-icon hidden"><i data-lucide="check" class="h-4 w-4"></i></span> Home 2
+                        </a>
+                    </div>
+                </div>
+
+                <a href="../pages/about.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="about.html">About</a>
+
+                <!-- Services Accordion -->
+                <div class="flex flex-col space-y-2 nav-item">
+                    <button class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        Services <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                    </button>
+                    <div class="hidden flex flex-col ps-4 space-y-3 mt-2 border-s-2 border-emerald-500/20">
+                        <a href="../pages/services.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="services.html">Engine Oil</a>
+                        <a href="../pages/recycling.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="recycling.html">Recycling</a>
+                        <a href="../pages/fleet.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="fleet.html">Fleet Solutions</a>
+                    </div>
+                </div>
+
+                <a href="../pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="pricing.html">Pricing</a>
+                <a href="../pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="contact.html">Contact</a>
+                <a href="../pages/dashboard/index.html" class="nav-link text-emerald-600 dark:text-emerald-400 font-bold" data-page="dashboard/index.html">Login to Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-20 bg-slate-900 relative">
+        <div class="absolute inset-0 z-0">
+            <img src="/assets/images/image5.png" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
+        </div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center" data-aos="zoom-in">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white mb-4 break-words">Our
+                Story</h1>
+            <p class="text-xl text-emerald-100">Revolutionizing fleet maintenance through technology and sustainability.
+            </p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <section class="py-24 max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-1 sm:grid-cols-2 gap-16 items-center mb-24">
+            <div data-aos="fade-right">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 break-words">Built for Modern
+                    Fleets</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-4 text-lg">Founded in 2020, EcoOil was built on a simple
+                    premise: commercial fleets shouldn't have to choose between operational efficiency and environmental
+                    responsibility.</p>
+                <p class="text-slate-600 dark:text-slate-400 mb-8 text-lg">We developed a proprietary closed-loop
+                    recycling process paired with a powerful SaaS dashboard to bring the maintenance directly to your
+                    yard, during your off-hours.</p>
+
+                <ul class="space-y-4">
+                    <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="check-circle"
+                            class="text-emerald-500"></i>
+                        <span class="font-medium">EPA Certified Operations</span>
+                    </li>
+                    <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="check-circle"
+                            class="text-emerald-500"></i>
+                        <span class="font-medium">Nationwide Mobile Network</span>
+                    </li>
+                    <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="check-circle"
+                            class="text-emerald-500"></i>
+                        <span class="font-medium">Zero-Downtime Guarantee</span>
+                    </li>
+                </ul>
+            </div>
+            <div data-aos="fade-left">
+                <img src="/assets/images/image6.png" alt="Team"
+                    class="rounded-3xl shadow-xl w-full h-[500px] object-cover rtl:-scale-x-100">
+            </div>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="grid md:grid-cols-1 sm:grid-cols-2 gap-8 mb-24" data-aos="fade-up">
+            <div
+                class="p-5 sm:p-8 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800">
+                <div
+                    class="h-12 w-12 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center mb-6">
+                    <i data-lucide="target" class="h-6 w-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 break-words">Our Mission</h3>
+                <p class="text-slate-600 dark:text-slate-400">To eliminate commercial fleet downtime entirely while
+                    pioneering the most eco-friendly closed-loop fluid recycling system in the logistics industry.</p>
+            </div>
+            <div class="p-5 sm:p-8 rounded-3xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800">
+                <div class="h-12 w-12 rounded-full bg-sky-500/20 text-sky-500 flex items-center justify-center mb-6"><i
+                        data-lucide="eye" class="h-6 w-6"></i></div>
+                <h3 class="text-2xl font-bold mb-4 break-words">Our Vision</h3>
+                <p class="text-slate-600 dark:text-slate-400">A future where heavy-duty industrial maintenance leaves
+                    absolutely zero environmental footprint, powered by smart data and mobile deployment.</p>
+            </div>
+        </div>
+
+        <!-- Team -->
+        <div class="mb-24 text-center">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-12 break-words" data-aos="fade-up">Our
+                Leadership Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <img src="/assets/images/person/image1.jpg"
+                        class="w-48 h-48 rounded-full mx-auto mb-6 shadow-lg" style="object-fit: cover; object-position: top center;" alt="CEO">
+                    <h4 class="text-xl font-bold">Michael Chen</h4>
+                    <p class="text-emerald-500 font-medium mb-2">CEO & Founder</p>
+                    <p class="text-slate-500 text-sm">Former logistics director with 15 years in commercial fleet
+                        management.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <img src="/assets/images/person/image2.jpg"
+                        class="w-48 h-48 rounded-full mx-auto mb-6 shadow-lg" style="object-fit: cover; object-position: top center;" alt="CTO">
+                    <h4 class="text-xl font-bold">Sarah Jenkins</h4>
+                    <p class="text-emerald-500 font-medium mb-2">Chief Technology Officer</p>
+                    <p class="text-slate-500 text-sm">Architect of the EcoPlatform SaaS dashboard and mobile scheduling
+                        routing algorithm.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <img src="/assets/images/person/image3.jpg"
+                        class="w-48 h-48 rounded-full mx-auto mb-6 shadow-lg" style="object-fit: cover; object-position: top center;" alt="COO">
+                    <h4 class="text-xl font-bold">David Rodriguez</h4>
+                    <p class="text-emerald-500 font-medium mb-2">Head of Field Operations</p>
+                    <p class="text-slate-500 text-sm">Oversees our nationwide fleet of mobile fluid exchange technicians
+                        and EPA compliance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications & Industries -->
+        <div class="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-8 md:gap-16">
+
+            <!-- Certifications -->
+            <div data-aos="fade-right">
+                <h3 class="text-2xl font-bold mb-6 text-center md:text-start break-words">
+                    Certifications
+                </h3>
+
+                <div class="space-y-4">
+
+                    <div
+                        class="flex items-start sm:items-center gap-4 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+
+                        <i data-lucide="shield-check" class="h-8 w-8 text-emerald-500 shrink-0"></i>
+
+                        <div>
+                            <p class="font-bold">EPA Certified Waste Handler</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">
+                                Tier 1 National Compliance
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="flex items-start sm:items-center gap-4 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+
+                        <i data-lucide="award" class="h-8 w-8 text-amber-500 shrink-0"></i>
+
+                        <div>
+                            <p class="font-bold">ISO 14001:2015</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">
+                                Environmental Management Systems
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Industries -->
+            <div data-aos="fade-left">
+
+                <h3 class="text-2xl font-bold mb-6 text-center md:text-start mt-2 md:mt-0 break-words">
+                    Industries Served
+                </h3>
+
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+
+                    <span
+                        class="inline-block whitespace-nowrap px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-sm text-center">
+                        Logistics & Trucking
+                    </span>
+
+                    <span
+                        class="inline-block whitespace-nowrap px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-sm text-center">
+                        Construction Equipment
+                    </span>
+
+                    <span
+                        class="inline-block whitespace-nowrap px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-sm text-center">
+                        Municipal Fleets
+                    </span>
+
+                    <span
+                        class="inline-block whitespace-nowrap px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-sm text-center">
+                        Agriculture Machinery
+                    </span>
+
+                    <span
+                        class="inline-block whitespace-nowrap px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-sm text-center">
+                        Delivery Vans
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-4 start-4 z-50 flex flex-col gap-2"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <!-- Page Navigation -->
+    <section class="py-12 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-between items-stretch">
+                <!-- Previous Link -->
+                <a href="../index.html"
+                    class="flex-1 group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:-translate-y-1 overflow-hidden block">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative flex items-center justify-between h-full">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="h-10 w-10 shrink-0 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                                <i data-lucide="arrow-left" class="h-5 w-5 rtl:rotate-180"></i>
+                            </div>
+                            <div class="text-start">
+                                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Previous
+                                </div>
+                                <h4
+                                    class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                    Home</h4>
+                                <p class="text-sm text-slate-500 hidden md:block mt-1">Return to the homepage and
+                                    discover our mobile oil recycling solutions, key services, and latest updates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- Next Link -->
+                <a href="services.html"
+                    class="flex-1 group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:-translate-y-1 overflow-hidden block">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-l from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative flex items-center justify-between h-full">
+                        <div class="flex items-center gap-4 w-full justify-end text-end">
+                            <div class="text-end">
+                                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Next
+                                </div>
+                                <h4
+                                    class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                    Services</h4>
+                                <p class="text-sm text-slate-500 hidden md:block mt-1">Explore our professional oil
+                                    recycling, fluid exchange, and fleet maintenance services.</p>
+                            </div>
+                            <div
+                                class="h-10 w-10 shrink-0 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                                <i data-lucide="arrow-right" class="h-5 w-5 rtl:rotate-180"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-slate-900 border-t border-slate-800 pt-20 pb-10 text-center md:text-start">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="../index.html" class="flex justify-center md:justify-start items-center gap-2 mb-6">
+                        <i data-lucide="droplet" class="text-emerald-500 h-8 w-8"></i>
+                        <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white">Eco<span
+                                class="text-emerald-500">Oil</span></span>
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Revolutionizing commercial fleet maintenance
+                        with eco-friendly mobile fluid exchange and real-time dashboard analytics.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Platform</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-emerald-500 transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-emerald-500 transition-colors">Pricing</a></li>
+                        <li><a href="dashboard/index.html" class="hover:text-emerald-500 transition-colors">Dashboard
+                                Login</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="phone"
+                                class="h-4 w-4 shrink-0"></i>
+                            1-800-ECO-FLUID</li>
+                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="mail"
+                                class="h-4 w-4 shrink-0"></i>
+                            contact@ecooil.com</li>
+                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="map-pin"
+                                class="h-4 w-4 shrink-0"></i> 123
+                            Green Way, TX 78701</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between text-center md:text-start gap-4 text-sm text-slate-500">
+                <p>&copy; 2026 EcoOil Services. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+

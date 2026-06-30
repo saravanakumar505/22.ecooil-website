@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoOil | Modern SaaS Platform</title>
+
+    <script>
+        // Pre-render theme and direction logic
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        const dir = localStorage.getItem('dir');
+        if (dir) {
+            document.documentElement.setAttribute('dir', dir);
+            document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/output.css">
+
+    <style>
+        /* Loader Animation */
+        #global-loader {
+            transition: opacity 0.5s ease-out;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #10b981;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Continuous Logo Scroll */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-250px * 7));
+            }
+        }
+
+        html[dir="rtl"] .logo-slide-track {
+            animation: scrollRtl 40s linear infinite;
+        }
+
+        @keyframes scrollRtl {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(250px * 7));
+            }
+        }
+
+        .logo-slider {
+            background: transparent;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+            height: 100px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .logo-slider::before,
+        .logo-slider::after {
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 200px;
+            z-index: 2;
+        }
+
+        .logo-slider::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        .logo-slider::before {
+            left: 0;
+            top: 0;
+        }
+
+        .logo-slide-track {
+            animation: scroll 40s linear infinite;
+            display: flex;
+            width: calc(250px * 14);
+        }
+
+        .logo-slide {
+            height: 100px;
+            width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Auto Slider */
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-slide {
+            scroll-snap-align: center;
+            flex: 0 0 100%;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-slide {
+                flex: 0 0 50%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .testimonial-slide {
+                flex: 0 0 33.333333%;
+            }
+        }
+
+        @keyframes float-subtle {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float-subtle {
+            animation: float-subtle 4s ease-in-out infinite;
+        }
+
+        .animate-float-subtle-delayed {
+            animation: float-subtle 5s ease-in-out infinite 1.5s;
+        }
+
+        .card-1-pos {
+            inset-inline-start: -20px;
+            top: 20px;
+        }
+
+        .card-2-pos {
+            inset-inline-end: -20px;
+            bottom: 10px;
+        }
+
+        @media (min-width: 1024px) {
+            .card-1-pos {
+                inset-inline-start: -60px;
+                top: 40px;
+            }
+
+            .card-2-pos {
+                inset-inline-end: -60px;
+                bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="font-sans antialiased text-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-200 transition-colors duration-300 relative overflow-x-hidden max-w-[100vw]">
+
+    <!-- Preloader -->
+    <div id="global-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900">
+        <div class="text-center flex flex-col items-center">
+            <div class="spinner mb-4"></div>
+            <div class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white">Eco<span
+                    class="text-emerald-500">Oil</span></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="fixed top-0 start-0 h-1 bg-gradient-to-r from-emerald-500 to-sky-500 z-50 transition-all duration-300 w-0 rounded-e-full"
+        id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed w-full z-40 transition-all duration-300 bg-white/95 dark:bg-slate-900/95 text-slate-800 dark:text-white py-4 shadow-sm backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-12">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../index.html" class="flex justify-center md:justify-start items-center gap-2">
+                        <i data-lucide="droplet" class="text-emerald-500 h-8 w-8"></i>
+                        <span
+                            class="font-display font-bold text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white">Eco<span
+                                class="text-emerald-500">Oil</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 rtl:space-x-reverse items-center font-medium">
+                    <!-- Home Dropdown Trigger -->
+                    <div class="relative group nav-item">
+                        <button
+                            class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                            Home <i data-lucide="chevron-down"
+                                class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Dropdown Content -->
+                        <div
+                            class="absolute top-full start-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-2 glass">
+                            <a href="../index.html"
+                                class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
+                                data-page="index.html">
+                                <span class="active-icon hidden"><i data-lucide="check"
+                                        class="h-4 w-4 text-emerald-500"></i></span> Home 1
+                            </a>
+                            <a href="../pages/home2.html"
+                                class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
+                                data-page="home2.html">
+                                <span class="active-icon hidden"><i data-lucide="check"
+                                        class="h-4 w-4 text-emerald-500"></i></span> Home 2
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="../pages/about.html" class="nav-link nav-item transition-colors hover:text-emerald-500"
+                        data-page="about.html">About</a>
+
+                    <!-- Mega Dropdown Trigger -->
+                    <div class="relative group nav-item">
+                        <button
+                            class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                            Services <i data-lucide="chevron-down"
+                                class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Dropdown Content -->
+                        <div
+                            class="absolute top-full start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-6 glass">
+                            <div class="flex flex-col gap-2">
+                                <a href="../pages/services.html"
+                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                                    data-page="services.html">
+                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
+                                            data-lucide="settings" class="h-4 w-4 text-emerald-500"></i> Engine Oil
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Full synthetic fluid
+                                        exchange.</p>
+                                </a>
+                                <a href="../pages/recycling.html"
+                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                                    data-page="recycling.html">
+                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
+                                            data-lucide="recycle" class="h-4 w-4 text-emerald-500"></i> Recycling</div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Closed-loop EPA
+                                        compliance.</p>
+                                </a>
+                                <a href="../pages/fleet.html" class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors " data-page="fleet.html">
+                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
+                                            data-lucide="truck" class="h-4 w-4 text-emerald-500"></i> Fleet Solutions
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">B2B commercial programs.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="../pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="pricing.html">Pricing</a>
+                    <a href="../pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="contact.html">Contact</a>
+
+                    <!-- Tools -->
+                    <div class="flex items-center gap-1 sm:gap-2 ms-2 sm:ms-4 border-s border-slate-200 dark:border-slate-700 ps-2 sm:ps-4">
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors" title="Toggle Theme">
+                            <i data-lucide="moon" class="h-5 w-5 hidden dark:block text-slate-300"></i>
+                            <i data-lucide="sun" class="h-5 w-5 block dark:hidden text-amber-500"></i>
+                        </button>
+                        <button id="rtl-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors font-bold text-sm" title="Toggle RTL">
+                            RTL
+                        </button>
+                    </div>
+
+                    <a href="../pages/dashboard/index.html" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-emerald-500/30 hover:-translate-y-0.5">Dashboard</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button id="rtl-toggle-mobile" class="p-2 font-bold text-sm">RTL</button>
+                    <button id="theme-toggle-mobile" class="p-2">
+                        <i data-lucide="moon" class="h-5 w-5 hidden dark:block text-slate-300"></i>
+                        <i data-lucide="sun" class="h-5 w-5 block dark:hidden text-amber-500"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden glass mt-2 mx-4 rounded-2xl p-4 shadow-xl text-slate-800 dark:text-white border border-slate-100 dark:border-slate-700">
+            <div class="flex flex-col space-y-4 font-medium">
+                <!-- Home Accordion -->
+                <div class="flex flex-col space-y-2 nav-item">
+                    <button class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        Home <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                    </button>
+                    <div class="hidden flex flex-col ps-4 space-y-3 mt-2 border-s-2 border-emerald-500/20">
+                        <a href="../index.html" class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2" data-page="index.html">
+                            <span class="active-icon hidden"><i data-lucide="check" class="h-4 w-4"></i></span> Home 1
+                        </a>
+                        <a href="../pages/home2.html" class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2" data-page="home2.html">
+                            <span class="active-icon hidden"><i data-lucide="check" class="h-4 w-4"></i></span> Home 2
+                        </a>
+                    </div>
+                </div>
+
+                <a href="../pages/about.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="about.html">About</a>
+
+                <!-- Services Accordion -->
+                <div class="flex flex-col space-y-2 nav-item">
+                    <button class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        Services <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                    </button>
+                    <div class="hidden flex flex-col ps-4 space-y-3 mt-2 border-s-2 border-emerald-500/20">
+                        <a href="../pages/services.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="services.html">Engine Oil</a>
+                        <a href="../pages/recycling.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="recycling.html">Recycling</a>
+                        <a href="../pages/fleet.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="fleet.html">Fleet Solutions</a>
+                    </div>
+                </div>
+
+                <a href="../pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="pricing.html">Pricing</a>
+                <a href="../pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="contact.html">Contact</a>
+                <a href="../pages/dashboard/index.html" class="nav-link text-emerald-600 dark:text-emerald-400 font-bold" data-page="dashboard/index.html">Login to Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (SaaS Style) -->
+    <section
+        class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-visible bg-gradient-to-br from-emerald-50 via-teal-50 to-white dark:from-slate-900 dark:via-emerald-950 dark:to-slate-900">
+        <!-- Abstract Shapes -->
+        <div class="absolute top-0 start-0 w-full h-full overflow-hidden z-0">
+            <div class="absolute -top-40 -end-40 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 -start-20 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Breadcrumb -->
+            <nav class="flex text-sm text-emerald-100/60 mb-8" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3 rtl:space-x-reverse">
+                    <li class="inline-flex items-center">
+                        <a href="../index.html" class="inline-flex items-center hover:text-white transition-colors">
+                            <i data-lucide="home" class="h-4 w-4 me-2 rtl:ms-2 rtl:me-0"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i data-lucide="chevron-right" class="h-4 w-4 rtl:rotate-180 mx-1"></i>
+                            <a href="services.html" class="ms-1 md:ms-2 hover:text-white transition-colors">Services</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <i data-lucide="chevron-right" class="h-4 w-4 rtl:rotate-180 mx-1"></i>
+                            <span class="ms-1 md:ms-2 text-white font-medium">SaaS Platform</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Left Content -->
+                <div class="lg:w-1/2 text-center lg:text-start" data-aos="fade-right">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 font-medium mb-6 border border-emerald-500/20 backdrop-blur-sm shadow-inner">
+                        <span class="flex h-2 w-2 relative">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        Introducing EcoPlatform 2.0
+                    </div>
+                    <h1
+                        class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight mb-6 text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-lg leading-tight break-words">
+                        Manage Your Fleet Fluids <br class="hidden xl:block" />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Intelligently.</span>
+                    </h1>
+                    <p
+                        class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        The all-in-one SaaS platform for scheduling mobile oil exchanges,
+                        tracking fleet health, and automating EPA recycling compliance.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="pricing.html"
+                            class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:-translate-y-1 text-center">
+                            Start Free Trial
+                        </a>
+                        <a href="#demo"
+                            class="w-full sm:w-auto bg-slate-900/5 hover:bg-slate-900/10 dark:bg-white/5 dark:hover:bg-white/10 backdrop-blur-md text-slate-800 dark:text-white border border-slate-900/10 dark:border-white/10 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <i data-lucide="play" class="h-5 w-5 text-emerald-400"></i>
+                            Watch Demo
+                        </a>
+                    </div>
+                    <div
+                        class="mt-12 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-600 dark:text-slate-400">
+                        <div class="flex -space-x-2">
+                            <img class="w-8 h-8 rounded-full border-2 border-slate-900"
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64"
+                                alt="User" />
+                            <img class="w-8 h-8 rounded-full border-2 border-slate-900"
+                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64"
+                                alt="User" />
+                            <img class="w-8 h-8 rounded-full border-2 border-slate-900"
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=64&h=64"
+                                alt="User" />
+                        </div>
+                        <p>Trusted by 500+ fleet managers</p>
+                    </div>
+                </div>
+
+                <!-- Right Dashboard Mockup -->
+                <div class="lg:w-1/2 relative w-full max-w-2xl mx-auto lg:max-w-none" data-aos="fade-left"
+                    data-aos-delay="200">
+                    <div
+                        class="relative z-10 rounded-2xl shadow-2xl shadow-emerald-900/50 transform rotate-1 hover:rotate-0 transition-transform duration-500 overflow-hidden border border-slate-700/50">
+                        <img src="/assets/images/image4.png" alt="Dashboard Platform Preview"
+                            class="w-full object-cover opacity-90 rtl:-scale-x-100 max-w-full" />
+                    </div>
+
+                    <!-- Floating Glass Cards -->
+                    <div style="top: 15%; inset-inline-start: -15%;"
+                        class="absolute glass p-4 rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl z-20 animate-float-subtle hidden md:block max-w-[220px]">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="h-10 w-10 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400"></i>
+                            </div>
+
+                            <div>
+                                <p
+                                    class="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium">
+                                    Service Completed
+                                </p>
+                                <p class="text-sm font-bold text-slate-900 dark:text-white">Truck #402</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recycling Rate -->
+                    <div style="bottom: 10%; inset-inline-end: -10%;"
+                        class="absolute glass p-4 rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl z-20 animate-float-subtle-delayed hidden md:block max-w-[220px]">
+                        <div class="flex items-center gap-4">
+                            <div class="h-10 w-10 rounded-full bg-sky-500/20 flex items-center justify-center shrink-0">
+                                <i data-lucide="bar-chart" class="h-5 w-5 text-sky-400"></i>
+                            </div>
+
+                            <div>
+                                <p
+                                    class="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium">
+                                    Recycling Rate
+                                </p>
+                                <p class="text-sm font-bold text-slate-900 dark:text-white">99.8%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Companies (Logo Slider) -->
+    <section class="py-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
+            <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Powering
+                industry leading fleets</p>
+        </div>
+        <div
+            class="logo-slider dark:before:from-slate-900 dark:after:from-slate-900 before:from-white after:from-white before:bg-gradient-to-r after:bg-gradient-to-r">
+            <div class="logo-slide-track">
+                <!-- Logos (duplicated for continuous scroll) -->
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="truck"></i> Apex Freight</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="hard-hat"></i> BuildCorp</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="building"></i> CityTransit</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="package"></i> GlobalLogistics</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="shield"></i> SafeTransport</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="zap"></i> FastDeliver</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="anchor"></i> PortAuthority</div>
+                </div>
+
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="truck"></i> Apex Freight</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="hard-hat"></i> BuildCorp</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="building"></i> CityTransit</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="package"></i> GlobalLogistics</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="shield"></i> SafeTransport</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="zap"></i> FastDeliver</div>
+                </div>
+                <div class="logo-slide">
+                    <div class="text-xl font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2"><i
+                            data-lucide="anchor"></i> PortAuthority</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Showcase Features -->
+    <section class="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-2">Platform Features</h2>
+                <h3 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-6">Everything
+                    you need to run an efficient fleet</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all group"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-500 flex items-center justify-center mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                        <i data-lucide="users" class="h-6 w-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Client Management</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Manage multiple depots, locations, and sub-fleets from
+                        a single unified dashboard.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all group"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="h-12 w-12 rounded-xl bg-sky-50 dark:bg-sky-900/30 text-sky-500 flex items-center justify-center mb-6 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                        <i data-lucide="truck" class="h-6 w-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Fleet Dispatch</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Track our mobile service units in real-time as they
+                        approach your facility.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all group"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="h-12 w-12 rounded-xl bg-amber-50 dark:bg-amber-900/30 text-amber-500 flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        <i data-lucide="clipboard-list" class="h-6 w-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Work Orders</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Automated scheduling, digital approvals, and complete
+                        service history per vehicle.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all group"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="h-12 w-12 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-500 flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                        <i data-lucide="pie-chart" class="h-6 w-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Analytics</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Visual insights into oil consumption, cost savings,
+                        and fleet uptime improvements.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all group"
+                    data-aos="fade-up" data-aos-delay="500">
+                    <div
+                        class="h-12 w-12 rounded-xl bg-rose-50 dark:bg-rose-900/30 text-rose-500 flex items-center justify-center mb-6 group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                        <i data-lucide="file-text" class="h-6 w-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Reports</h4>
+                    <p class="text-slate-600 dark:text-slate-400">One-click export of EPA compliance certificates and
+                        sustainability metrics.</p>
+                </div>
+                <!-- CTA Card -->
+                <div class="bg-emerald-500 p-8 rounded-3xl shadow-lg flex flex-col justify-center items-center text-center group"
+                    data-aos="fade-up" data-aos-delay="600">
+                    <h4 class="text-2xl font-bold text-white mb-4">Ready to upgrade?</h4>
+                    <a href="pricing.html"
+                        class="bg-white text-emerald-600 px-6 py-3 rounded-full font-bold transition-transform hover:scale-105">View
+                        Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview & Fleet Statistics -->
+    <section class="py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <!-- Services -->
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-white mb-8">Our Core Services
+                    </h2>
+                    <div class="flex flex-col gap-2">
+                        <a href="services.html"
+                            class="block p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-emerald-500 transition-colors group">
+                            <i data-lucide="settings" class="h-8 w-8 text-emerald-500 mb-4"></i>
+                            <h4
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                                Engine Oil</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Premium synthetic exchanges.</p>
+                        </a>
+                        <a href="recycling.html"
+                            class="block p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-emerald-500 transition-colors group">
+                            <i data-lucide="recycle" class="h-8 w-8 text-emerald-500 mb-4"></i>
+                            <h4
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                                Recycling</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Closed-loop recovery.</p>
+                        </a>
+                        <a href="fleet.html"
+                            class="block p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-emerald-500 transition-colors group">
+                            <i data-lucide="truck" class="h-8 w-8 text-emerald-500 mb-4"></i>
+                            <h4
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">
+                                Fleet Solutions</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">B2B tailored programs.</p>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="lg:w-1/2 flex flex-col justify-center" data-aos="fade-left">
+                    <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-white mb-8">Platform Impact</h2>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <div class="text-4xl font-display font-extrabold text-emerald-500 mb-2"><span
+                                    class="counter-val" data-target="1500">0</span>+</div>
+                            <div
+                                class="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                                Vehicles Managed</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-display font-extrabold text-emerald-500 mb-2"><span
+                                    class="counter-val" data-target="300">0</span>+</div>
+                            <div
+                                class="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                                Clients Served</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-display font-extrabold text-emerald-500 mb-2"><span
+                                    class="counter-val" data-target="5">0</span>M</div>
+                            <div
+                                class="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                                Litres Recycled</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-display font-extrabold text-emerald-500 mb-2"><span
+                                    class="counter-val" data-target="25000">0</span></div>
+                            <div
+                                class="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                                Work Orders Done</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Analytics (Frontend Charts UI) -->
+    <section
+        class="py-24 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">Beautiful
+                    Analytics Built In</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400">Make data-driven decisions with out-of-the-box
+                    reporting.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <!-- UI Cards -->
+                <div class="space-y-6 relative" data-aos="fade-right">
+                    <!-- Fake Chart Card 1 -->
+                    <div
+                        class="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-700">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="font-bold text-slate-900 dark:text-white">Monthly Jobs</h4>
+                            <span class="text-emerald-500 text-sm font-bold flex items-center"><i
+                                    data-lucide="trending-up" class="h-4 w-4 me-1"></i> +12%</span>
+                        </div>
+                        <div class="flex items-end gap-2 h-32">
+                            <div
+                                class="w-full bg-emerald-100 dark:bg-emerald-900/30 rounded-t-md h-[40%] hover:bg-emerald-400 transition-colors cursor-pointer">
+                            </div>
+                            <div
+                                class="w-full bg-emerald-100 dark:bg-emerald-900/30 rounded-t-md h-[60%] hover:bg-emerald-400 transition-colors cursor-pointer">
+                            </div>
+                            <div
+                                class="w-full bg-emerald-100 dark:bg-emerald-900/30 rounded-t-md h-[50%] hover:bg-emerald-400 transition-colors cursor-pointer">
+                            </div>
+                            <div
+                                class="w-full bg-emerald-500 rounded-t-md h-[80%] shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-pointer">
+                            </div>
+                            <div
+                                class="w-full bg-emerald-100 dark:bg-emerald-900/30 rounded-t-md h-[70%] hover:bg-emerald-400 transition-colors cursor-pointer">
+                            </div>
+                            <div
+                                class="w-full bg-emerald-100 dark:bg-emerald-900/30 rounded-t-md h-[90%] hover:bg-emerald-400 transition-colors cursor-pointer">
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-400 mt-2">
+                            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Fake Chart Card 2 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-700">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-4">Fleet Status</h4>
+                            <div class="relative w-32 h-32 mx-auto">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <!-- Background Circle -->
+                                    <path class="text-slate-100 dark:text-slate-800" stroke-width="4"
+                                        stroke="currentColor" fill="none"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <!-- Progress Circle -->
+                                    <path class="text-emerald-500" stroke-dasharray="85, 100" stroke-width="4"
+                                        stroke="currentColor" fill="none"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center flex-col">
+                                    <span class="text-xl font-bold text-slate-900 dark:text-white">85%</span>
+                                    <span class="text-[10px] text-slate-500 uppercase">Healthy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fake Chart Card 3 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-700">
+                            <div
+                                class="h-10 w-10 rounded-full bg-sky-50 dark:bg-sky-900/30 text-sky-500 flex items-center justify-center mb-4">
+                                <i data-lucide="droplet" class="h-5 w-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 dark:text-white text-2xl mb-1">1,240 <span
+                                    class="text-sm font-normal text-slate-500">Gal</span></h4>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider mb-4">Oil Usage</p>
+                            <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-500 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:ps-12" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Gain visibility into every drop
+                        of fluid.</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 h-6 w-6 shrink-0"></i>
+                            <span class="text-slate-600 dark:text-slate-400">Track oil consumption trends across
+                                different vehicle classes.</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 h-6 w-6 shrink-0"></i>
+                            <span class="text-slate-600 dark:text-slate-400">Predict maintenance schedules based on
+                                historical usage data.</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 h-6 w-6 shrink-0"></i>
+                            <span class="text-slate-600 dark:text-slate-400">Measure your exact environmental impact
+                                with recycling metrics.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Platform Workflow-->
+    <section class="py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">
+                    The Platform Workflow
+                </h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400">
+                    From scheduling to compliance in 4 simple steps.
+                </p>
+            </div>
+
+            <!-- Timeline Wrapper -->
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Desktop Center Line -->
+                <div
+                    class="hidden md:block absolute start-1/2 top-0 bottom-0 w-1 bg-slate-200 dark:bg-slate-700 transform -translate-x-1/2 rtl:translate-x-1/2 z-0">
+                </div>
+
+                <div class="space-y-0 md:space-y-12">
+                    <!-- Step 1 -->
+                    <div class="relative flex flex-row items-start md:block group pb-8 md:pb-0" data-aos="fade-up">
+                        <!-- Mobile Line -->
+                        <div
+                            class="md:hidden absolute start-[1.25rem] top-10 bottom-0 w-1 bg-slate-200 dark:bg-slate-700 transform -translate-x-1/2 rtl:translate-x-1/2 z-0">
+                        </div>
+
+                        <!-- Circle -->
+                        <div
+                            class="shrink-0 flex items-center justify-center relative md:absolute md:start-1/2 md:top-1/2 transform md:-translate-y-1/2 md:-translate-x-1/2 rtl:md:translate-x-1/2 z-10 w-10 h-10 md:w-12 md:h-12 me-4 md:me-0">
+
+                        </div>
+
+                        <!-- Content -->
+                        <div
+                            class="flex-1 md:w-1/2 md:pe-16 rtl:md:pe-0 rtl:md:ps-16 text-start md:text-end rtl:md:text-start pt-1 md:pt-0">
+                            <h4
+                                class="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-8 md:leading-normal">
+                                1. Schedule Service
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Log in and request mobile service with a few clicks. Choose
+                                your optimal off-hours window.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative flex flex-row items-start md:block group pb-8 md:pb-0" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <!-- Mobile Line -->
+                        <div
+                            class="md:hidden absolute start-[1.25rem] top-10 bottom-0 w-1 bg-slate-200 dark:bg-slate-700 transform -translate-x-1/2 rtl:translate-x-1/2 z-0">
+                        </div>
+
+                        <!-- Circle -->
+                        <div
+                            class="shrink-0 flex items-center justify-center relative md:absolute md:start-1/2 md:top-1/2 transform md:-translate-y-1/2 md:-translate-x-1/2 rtl:md:translate-x-1/2 z-10 w-10 h-10 md:w-12 md:h-12 me-4 md:me-0">
+
+                        </div>
+
+                        <!-- Content -->
+                        <div
+                            class="flex-1 md:w-1/2 md:ms-auto md:ps-16 rtl:md:ps-0 rtl:md:pe-16 text-start pt-1 md:pt-0">
+                            <h4
+                                class="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-8 md:leading-normal">
+                                2. Mobile Service
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Our technicians arrive on-site, complete the fluid exchange,
+                                and digitally log the work order.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative flex flex-row items-start md:block group pb-8 md:pb-0" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <!-- Mobile Line -->
+                        <div
+                            class="md:hidden absolute start-[1.25rem] top-10 bottom-0 w-1 bg-slate-200 dark:bg-slate-700 transform -translate-x-1/2 rtl:translate-x-1/2 z-0">
+                        </div>
+
+                        <!-- Circle -->
+                        <div
+                            class="shrink-0 flex items-center justify-center relative md:absolute md:start-1/2 md:top-1/2 transform md:-translate-y-1/2 md:-translate-x-1/2 rtl:md:translate-x-1/2 z-10 w-10 h-10 md:w-12 md:h-12 me-4 md:me-0">
+
+                        </div>
+
+                        <!-- Content -->
+                        <div
+                            class="flex-1 md:w-1/2 md:pe-16 rtl:md:pe-0 rtl:md:ps-16 text-start md:text-end rtl:md:text-start pt-1 md:pt-0">
+                            <h4
+                                class="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-8 md:leading-normal">
+                                3. Fluid Recycling
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Used oil is safely transported and processed in our
+                                closed-loop facility.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative flex flex-row items-start md:block group pb-0" data-aos="fade-up"
+                        data-aos-delay="300">
+                        <!-- Circle -->
+                        <div
+                            class="shrink-0 flex items-center justify-center relative md:absolute md:start-1/2 md:top-1/2 transform md:-translate-y-1/2 md:-translate-x-1/2 rtl:md:translate-x-1/2 z-10 w-10 h-10 md:w-12 md:h-12 me-4 md:me-0">
+
+                        </div>
+
+                        <!-- Content -->
+                        <div
+                            class="flex-1 md:w-1/2 md:ms-auto md:ps-16 rtl:md:ps-0 rtl:md:pe-16 text-start pt-1 md:pt-0">
+                            <h4
+                                class="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-8 md:leading-normal">
+                                4. Compliance Report
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Instantly view or download your EPA compliance certificate
+                                directly from the dashboard.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose EcoOil (Modern Feature Cards) -->
+    <section class="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">Why Modern
+                    Fleets Choose Us</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <i data-lucide="zap" class="h-8 w-8 text-amber-500 mb-4"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Zero Downtime</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">We work while your fleet sleeps.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <i data-lucide="leaf" class="h-8 w-8 text-emerald-500 mb-4"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Eco-Friendly</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">100% closed-loop recycling.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700"
+                    data-aos="zoom-in" data-aos-delay="300">
+                    <i data-lucide="shield-check" class="h-8 w-8 text-sky-500 mb-4"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Audit Ready</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Automated EPA documentation.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-lg transition-shadow border border-slate-100 dark:border-slate-700"
+                    data-aos="zoom-in" data-aos-delay="400">
+                    <i data-lucide="smartphone" class="h-8 w-8 text-purple-500 mb-4"></i>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">SaaS Powered</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Complete digital visibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Auto Slider) -->
+    <section class="py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">What Our
+                    Clients Say</h2>
+            </div>
+
+            <div class="relative w-full">
+                <!-- Slider Container -->
+                <div id="testimonial-slider" class="testimonial-slider pb-8 gap-6 px-4">
+                    <!-- Slide 1 -->
+                    <div
+                        class="testimonial-slide bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm shrink-0">
+                        <div class="flex text-amber-400 mb-4"><i data-lucide="star" class="fill-current h-5 w-5"></i><i
+                                data-lucide="star" class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star" class="fill-current h-5 w-5"></i>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 italic">"The software platform makes managing
+                            200 trucks effortless. We just book it and forget it."</p>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-bold">
+                                JD</div>
+                            <div>
+                                <h4 class="font-bold text-sm">John Doe</h4>
+                                <p class="text-xs text-slate-500">Fleet Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div
+                        class="testimonial-slide bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm shrink-0">
+                        <div class="flex text-amber-400 mb-4"><i data-lucide="star" class="fill-current h-5 w-5"></i><i
+                                data-lucide="star" class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star" class="fill-current h-5 w-5"></i>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 italic">"Having digital EPA certificates
+                            accessible 24/7 saved us during our last environmental audit."</p>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center font-bold">
+                                SJ</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Sarah Jenkins</h4>
+                                <p class="text-xs text-slate-500">Compliance Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div
+                        class="testimonial-slide bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm shrink-0">
+                        <div class="flex text-amber-400 mb-4"><i data-lucide="star" class="fill-current h-5 w-5"></i><i
+                                data-lucide="star" class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star" class="fill-current h-5 w-5"></i>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 italic">"Zero downtime is real. They service
+                            our construction equipment on weekends."</p>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold">
+                                MR</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Mike Ross</h4>
+                                <p class="text-xs text-slate-500">Site Director</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div
+                        class="testimonial-slide bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm shrink-0">
+                        <div class="flex text-amber-400 mb-4"><i data-lucide="star" class="fill-current h-5 w-5"></i><i
+                                data-lucide="star" class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star"
+                                class="fill-current h-5 w-5"></i><i data-lucide="star" class="fill-current h-5 w-5"></i>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 italic">"The analytics dashboard helped us
+                            reduce overall fluid costs by 15% in the first year."</p>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold">
+                                AL</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Amanda Lee</h4>
+                                <p class="text-xs text-slate-500">Operations VP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-white mb-4">Platform FAQ</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="faq-item bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden"
+                    data-aos="fade-up">
+                    <button
+                        class="w-full px-6 py-5 text-start font-bold text-lg text-slate-900 dark:text-white flex justify-between items-center focus:outline-none">
+                        How does the SaaS platform integrate with my fleet?
+                        <i data-lucide="chevron-down"
+                            class="faq-icon h-5 w-5 text-emerald-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+                        <p class="pb-5 text-slate-600 dark:text-slate-400">It's completely cloud-based. You simply
+                            upload your vehicle roster, and our platform tracks maintenance intervals, schedules, and
+                            digital records automatically.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <button
+                        class="w-full px-6 py-5 text-start font-bold text-lg text-slate-900 dark:text-white flex justify-between items-center focus:outline-none">
+                        Can I export data for accounting?
+                        <i data-lucide="chevron-down"
+                            class="faq-icon h-5 w-5 text-emerald-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+                        <p class="pb-5 text-slate-600 dark:text-slate-400">Yes, the dashboard allows one-click exports
+                            of all invoices, service records, and EPA certificates in PDF and CSV formats.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Large CTA -->
+    <section class="py-24 bg-slate-100 dark:bg-slate-900 relative overflow-hidden">
+        <!-- Background shapes -->
+        <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')] bg-[length:30px_30px] dark:opacity-5 opacity-10"></div>
+        <div class="absolute top-0 end-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 start-0 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-slate-900 dark:text-white mb-6">Ready to modernize your fleet
+                maintenance?</h2>
+            <p class="text-xl text-slate-600 dark:text-slate-300 mb-10">Join hundreds of companies saving time and money with EcoOil.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="pricing.html"
+                    class="bg-emerald-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-emerald-600 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)]">Schedule
+                    Service</a>
+                <a href="dashboard/index.html"
+                    class="bg-white dark:bg-white/5 text-slate-900 dark:text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 dark:hover:bg-white/10 transition-colors backdrop-blur-md border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">Open
+                    Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Navigation -->
+    <section class="py-12 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-between items-stretch">
+                <!-- Previous Link -->
+                <a href="../index.html"
+                    class="flex-1 group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:-translate-y-1 overflow-hidden block">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative flex items-center justify-between h-full">
+                        <div class="flex items-center gap-4 w-full justify-start text-start">
+                            <div
+                                class="h-10 w-10 shrink-0 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                                <i data-lucide="arrow-left" class="h-5 w-5 rtl:rotate-180"></i>
+                            </div>
+                            <div class="text-start">
+                                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Previous
+                                </div>
+                                <h4
+                                    class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                    Home 1</h4>
+                                <p class="text-sm text-slate-500 hidden md:block mt-1">Explore our classic business
+                                    homepage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- Next Link -->
+                <a href="about.html"
+                    class="flex-1 group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:-translate-y-1 overflow-hidden block">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-l from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative flex items-center justify-between h-full">
+                        <div class="flex items-center gap-4 w-full justify-end text-end">
+                            <div class="text-end">
+                                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Next
+                                </div>
+                                <h4
+                                    class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                    About</h4>
+                                <p class="text-sm text-slate-500 hidden md:block mt-1">Learn more about our mission and
+                                    expertise.</p>
+                            </div>
+                            <div
+                                class="h-10 w-10 shrink-0 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                                <i data-lucide="arrow-right" class="h-5 w-5 rtl:rotate-180"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 pt-20 pb-10 text-center md:text-start">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="../index.html" class="flex justify-center md:justify-start items-center gap-2 mb-6">
+                        <i data-lucide="droplet" class="text-emerald-500 h-8 w-8"></i>
+                        <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white">Eco<span
+                                class="text-emerald-500">Oil</span></span>
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Revolutionizing commercial fleet maintenance
+                        with eco-friendly mobile fluid exchange and real-time dashboard analytics.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Platform</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-emerald-500 transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-emerald-500 transition-colors">Pricing</a></li>
+                        <li><a href="dashboard/index.html" class="hover:text-emerald-500 transition-colors">Dashboard
+                                Login</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="phone"
+                                class="h-4 w-4 shrink-0"></i> 1-800-ECO-FLUID</li>
+                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="mail"
+                                class="h-4 w-4 shrink-0"></i> contact@ecooil.com</li>
+                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="map-pin"
+                                class="h-4 w-4 shrink-0"></i> 123 Green Way, TX 78701</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Newsletter</h4>
+                    <p class="text-sm text-slate-400 mb-4">Subscribe for platform updates.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email address"
+                            class="bg-slate-800 border-slate-700 text-white px-4 py-2 rounded-s-lg w-full focus:outline-none focus:border-emerald-500">
+                        <button
+                            class="bg-emerald-500 text-white px-4 py-2 rounded-e-lg hover:bg-emerald-600 transition-colors"><i
+                                data-lucide="send" class="h-4 w-4"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between text-center md:text-start gap-4 text-sm text-slate-500">
+                <p>&copy; 2026 EcoOil Services. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top"
+        class="fixed bottom-8 end-8 bg-emerald-500 text-white p-3 rounded-full shadow-lg hover:bg-emerald-600 transition-all duration-300 opacity-0 translate-y-4 hidden items-center justify-center z-50">
+        <i data-lucide="chevron-up" class="h-6 w-6"></i>
+    </button>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="fixed top-20 end-4 z-50 flex flex-col gap-2"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        // Testimonial Auto Slider Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const slider = document.getElementById('testimonial-slider');
+            if (slider) {
+                let scrollAmount = 0;
+                const slideWidth = slider.querySelector('.testimonial-slide').offsetWidth;
+
+                setInterval(() => {
+                    slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                    scrollAmount += slideWidth;
+
+                    if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
+                        setTimeout(() => {
+                            slider.scrollTo({ left: 0, behavior: 'smooth' });
+                            scrollAmount = 0;
+                        }, 1000);
+                    }
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>
+
