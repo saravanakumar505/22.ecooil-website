@@ -21,6 +21,8 @@
             document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
         }
     </script>
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="apple-touch-icon" href="/assets/images/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,8 +190,7 @@
                 <div class="hidden lg:flex space-x-8 rtl:space-x-reverse items-center font-medium">
                     <!-- Home Dropdown Trigger -->
                     <div class="relative group nav-item">
-                        <button
-                            class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                        <button class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
                             Home <i data-lucide="chevron-down"
                                 class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -216,8 +217,7 @@
 
                     <!-- Mega Dropdown Trigger -->
                     <div class="relative group nav-item">
-                        <button
-                            class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                        <button class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
                             Services <i data-lucide="chevron-down"
                                 class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -242,7 +242,9 @@
                                     <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Closed-loop EPA
                                         compliance.</p>
                                 </a>
-                                <a href="./pages/fleet.html" class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors " data-page="fleet.html">
+                                <a href="./pages/fleet.html"
+                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors "
+                                    data-page="fleet.html">
                                     <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
                                             data-lucide="truck" class="h-4 w-4 text-emerald-500"></i> Fleet Solutions
                                     </div>
@@ -253,21 +255,29 @@
                         </div>
                     </div>
 
-                    <a href="./pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="pricing.html">Pricing</a>
-                    <a href="./pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="contact.html">Contact</a>
+                    <a href="./pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                        data-page="pricing.html">Pricing</a>
+                    <a href="./pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                        data-page="contact.html">Contact</a>
 
                     <!-- Tools -->
-                    <div class="flex items-center gap-1 sm:gap-2 ms-2 sm:ms-4 border-s border-slate-200 dark:border-slate-700 ps-2 sm:ps-4">
-                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors" title="Toggle Theme">
+                    <div
+                        class="flex items-center gap-1 sm:gap-2 ms-2 sm:ms-4 border-s border-slate-200 dark:border-slate-700 ps-2 sm:ps-4">
+                        <button id="theme-toggle"
+                            class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
+                            title="Toggle Theme">
                             <i data-lucide="moon" class="h-5 w-5 hidden dark:block text-slate-300"></i>
                             <i data-lucide="sun" class="h-5 w-5 block dark:hidden text-amber-500"></i>
                         </button>
-                        <button id="rtl-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors font-bold text-sm" title="Toggle RTL">
+                        <button id="rtl-toggle"
+                            class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors font-bold text-sm"
+                            title="Toggle RTL">
                             RTL
                         </button>
                     </div>
 
-                    <a href="./pages/dashboard/index.html" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-emerald-500/30 hover:-translate-y-0.5">Dashboard</a>
+                    <a href="./pages/dashboard/index.html"
+                        class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-emerald-500/30 hover:-translate-y-0.5">Dashboard</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -285,40 +295,58 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden glass mt-2 mx-4 rounded-2xl p-4 shadow-xl text-slate-800 dark:text-white border border-slate-100 dark:border-slate-700">
+        <div id="mobile-menu"
+            class="hidden lg:hidden glass mt-2 mx-4 rounded-2xl p-4 shadow-xl text-slate-800 dark:text-white border border-slate-100 dark:border-slate-700">
             <div class="flex flex-col space-y-4 font-medium">
                 <!-- Home Accordion -->
                 <div class="flex flex-col space-y-2 nav-item">
-                    <button class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                    <button
+                        class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger"
+                        onclick="this.nextElementSibling.classList.toggle('hidden')">
                         Home <i data-lucide="chevron-down" class="h-4 w-4"></i>
                     </button>
                     <div class="hidden flex flex-col ps-4 space-y-3 mt-2 border-s-2 border-emerald-500/20">
-                        <a href="./index.html" class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2" data-page="index.html">
+                        <a href="./index.html"
+                            class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2"
+                            data-page="index.html">
                             <span class="active-icon hidden"><i data-lucide="check" class="h-4 w-4"></i></span> Home 1
                         </a>
-                        <a href="./pages/home2.html" class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2" data-page="home2.html">
+                        <a href="./pages/home2.html"
+                            class="nav-link text-sm hover:text-emerald-500 transition-colors flex items-center gap-2"
+                            data-page="home2.html">
                             <span class="active-icon hidden"><i data-lucide="check" class="h-4 w-4"></i></span> Home 2
                         </a>
                     </div>
                 </div>
 
-                <a href="./pages/about.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="about.html">About</a>
+                <a href="./pages/about.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                    data-page="about.html">About</a>
 
                 <!-- Services Accordion -->
                 <div class="flex flex-col space-y-2 nav-item">
-                    <button class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                    <button
+                        class="flex justify-between items-center w-full text-start font-medium hover:text-emerald-500 transition-colors nav-trigger"
+                        onclick="this.nextElementSibling.classList.toggle('hidden')">
                         Services <i data-lucide="chevron-down" class="h-4 w-4"></i>
                     </button>
                     <div class="hidden flex flex-col ps-4 space-y-3 mt-2 border-s-2 border-emerald-500/20">
-                        <a href="./pages/services.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="services.html">Engine Oil</a>
-                        <a href="./pages/recycling.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="recycling.html">Recycling</a>
-                        <a href="./pages/fleet.html" class="nav-link text-sm hover:text-emerald-500 transition-colors" data-page="fleet.html">Fleet Solutions</a>
+                        <a href="./pages/services.html"
+                            class="nav-link text-sm hover:text-emerald-500 transition-colors"
+                            data-page="services.html">Engine Oil</a>
+                        <a href="./pages/recycling.html"
+                            class="nav-link text-sm hover:text-emerald-500 transition-colors"
+                            data-page="recycling.html">Recycling</a>
+                        <a href="./pages/fleet.html" class="nav-link text-sm hover:text-emerald-500 transition-colors"
+                            data-page="fleet.html">Fleet Solutions</a>
                     </div>
                 </div>
 
-                <a href="./pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="pricing.html">Pricing</a>
-                <a href="./pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors" data-page="contact.html">Contact</a>
-                <a href="./pages/dashboard/index.html" class="nav-link text-emerald-600 dark:text-emerald-400 font-bold" data-page="dashboard/index.html">Login to Dashboard</a>
+                <a href="./pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                    data-page="pricing.html">Pricing</a>
+                <a href="./pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                    data-page="contact.html">Contact</a>
+                <a href="./pages/dashboard/index.html" class="nav-link text-emerald-600 dark:text-emerald-400 font-bold"
+                    data-page="dashboard/index.html">Login to Dashboard</a>
             </div>
         </div>
     </nav>
@@ -644,8 +672,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative">
                 <!-- Connecting Line for Desktop -->
-                <div
-                    class="hidden md:block absolute top-12 start-1/6 end-1/6 h-0.5 bg-slate-200 dark:bg-slate-700 z-0">
+                <div class="hidden md:block absolute top-12 start-1/6 end-1/6 h-0.5 bg-slate-200 dark:bg-slate-700 z-0">
                 </div>
 
                 <div class="relative z-10 text-center" data-aos="fade-up" data-aos-delay="100">
@@ -773,8 +800,7 @@
             </div>
 
             <!-- Features Grid below the main hero mockup -->
-            <div
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div class="p-5 sm:p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 transition-all shadow-sm hover:shadow-xl group"
                     data-aos="fade-up" data-aos-delay="100">

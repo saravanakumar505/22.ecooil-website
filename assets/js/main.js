@@ -205,7 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 12. Set Active Menu Item for Sidebar
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    let currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    // Remove query params or hashes just in case
+    currentPath = currentPath.split('?')[0].split('#')[0];
+    const currentBase = currentPath.replace('.html', '');
+    const isDashboardPath = window.location.pathname.includes('/dashboard/');
+
     const sidebarLinks = document.querySelectorAll('#sidebar a[data-page]');
     
     sidebarLinks.forEach(link => {
@@ -216,7 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const page = link.getAttribute('data-page');
-        if (page === currentPath) {
+        if (!page) return;
+        const pageBase = page.split('?')[0].split('#')[0].replace('.html', '').split('/').pop();
+
+        if (pageBase === currentBase) {
             link.classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-white', 'border-transparent');
             link.classList.add('bg-emerald-500/20', 'text-emerald-400', 'font-medium', 'border', 'border-emerald-500/20');
         } else {
@@ -229,7 +237,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         const linkPage = link.getAttribute('data-page');
-        if (linkPage && (linkPage === currentPath || (currentPath === '' && linkPage === 'index.html'))) {
+        if (!linkPage) return;
+
+        const linkBase = linkPage.split('?')[0].split('#')[0].replace('.html', '');
+        const linkFile = linkBase.split('/').pop();
+
+        // Ensure we don't activate main site "Home" when in dashboard, unless the link specifically includes 'dashboard'
+        if (isDashboardPath && !linkBase.includes('dashboard')) {
+            return;
+        }
+
+        if (linkFile === currentBase || (currentBase === '' && linkFile === 'index')) {
             
             // Highlight the link itself
             link.classList.add('text-emerald-500', 'font-bold');
