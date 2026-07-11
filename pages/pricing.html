@@ -40,92 +40,105 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-12">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="../index.html" class="flex justify-center md:justify-start items-center gap-2">
-                        <i data-lucide="droplet" class="text-emerald-500 h-8 w-8"></i>
-                        <span
-                            class="font-display font-bold text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white">Eco<span
-                                class="text-emerald-500">Oil</span></span>
+                <div class="flex-shrink-0 flex items-center justify-start lg:w-80">
+                    <a href="../index.html" class="flex justify-center md:justify-start items-center">
+                        <img src="../assets/images/logo.png" alt="EcoOil Logo" class="h-8 w-auto" />
                     </a>
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex space-x-8 rtl:space-x-reverse items-center font-medium">
-                    <!-- Home Dropdown Trigger -->
-                    <div class="relative group nav-item">
-                        <button class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
-                            Home <i data-lucide="chevron-down"
-                                class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
-                        </button>
-                        <!-- Dropdown Content -->
-                        <div
-                            class="absolute top-full start-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-2 glass">
-                            <a href="../index.html"
-                                class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
-                                data-page="index.html">
-                                <span class="active-icon hidden"><i data-lucide="check"
-                                        class="h-4 w-4 text-emerald-500"></i></span> Home 1
-                            </a>
-                            <a href="../pages/home2.html"
-                                class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
-                                data-page="home2.html">
-                                <span class="active-icon hidden"><i data-lucide="check"
-                                        class="h-4 w-4 text-emerald-500"></i></span> Home 2
-                            </a>
-                        </div>
-                    </div>
-
-                    <a href="../pages/about.html" class="nav-link nav-item transition-colors hover:text-emerald-500"
-                        data-page="about.html">About</a>
-
-                    <!-- Mega Dropdown Trigger -->
-                    <div class="relative group nav-item">
-                        <button class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
-                            Services <i data-lucide="chevron-down"
-                                class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
-                        </button>
-                        <!-- Dropdown Content -->
-                        <div
-                            class="absolute top-full start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-6 glass">
-                            <div class="flex flex-col gap-2">
-                                <a href="../pages/services.html"
-                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
-                                    data-page="services.html">
-                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
-                                            data-lucide="settings" class="h-4 w-4 text-emerald-500"></i> Engine Oil
-                                    </div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Full synthetic fluid
-                                        exchange.</p>
+                <div class="hidden lg:flex flex-grow justify-center">
+                    <div class="flex space-x-8 rtl:space-x-reverse items-center font-medium">
+                        <!-- Home Dropdown Trigger -->
+                        <div class="relative group nav-item">
+                            <button
+                                class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                                Home <i data-lucide="chevron-down"
+                                    class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
+                            </button>
+                            <!-- Dropdown Content -->
+                            <div
+                                class="absolute top-full start-0 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-2 glass">
+                                <a href="../index.html"
+                                    class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
+                                    data-page="index.html">
+                                    <span class="active-icon hidden"><i data-lucide="check"
+                                            class="h-4 w-4 text-emerald-500"></i></span> Home 1
                                 </a>
-                                <a href="../pages/recycling.html"
-                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
-                                    data-page="recycling.html">
-                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
-                                            data-lucide="recycle" class="h-4 w-4 text-emerald-500"></i> Recycling</div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Closed-loop EPA
-                                        compliance.</p>
-                                </a>
-                                <a href="../pages/fleet.html"
-                                    class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors "
-                                    data-page="fleet.html">
-                                    <div class="font-semibold text-slate-900 dark:text-white flex items-center gap-2"><i
-                                            data-lucide="truck" class="h-4 w-4 text-emerald-500"></i> Fleet Solutions
-                                    </div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">B2B commercial programs.
-                                    </p>
+                                <a href="../pages/home2.html"
+                                    class="nav-link block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors flex items-center gap-2"
+                                    data-page="home2.html">
+                                    <span class="active-icon hidden"><i data-lucide="check"
+                                            class="h-4 w-4 text-emerald-500"></i></span> Home 2
                                 </a>
                             </div>
                         </div>
+
+                        <a href="../pages/about.html" class="nav-link nav-item transition-colors hover:text-emerald-500"
+                            data-page="about.html">About</a>
+
+                        <!-- Mega Dropdown Trigger -->
+                        <div class="relative group nav-item">
+                            <button
+                                class="flex items-center gap-1 transition-colors hover:text-emerald-500 nav-trigger">
+                                Services <i data-lucide="chevron-down"
+                                    class="h-4 w-4 transition-transform group-hover:rotate-180"></i>
+                            </button>
+                            <!-- Dropdown Content -->
+                            <div
+                                class="absolute top-full start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 p-6 glass">
+                                <div class="flex flex-col gap-2">
+                                    <a href="../pages/services.html"
+                                        class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                                        data-page="services.html">
+                                        <div
+                                            class="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                                            <i data-lucide="settings" class="h-4 w-4 text-emerald-500"></i> Engine Oil
+                                        </div>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Full synthetic fluid
+                                            exchange.</p>
+                                    </a>
+                                    <a href="../pages/recycling.html"
+                                        class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                                        data-page="recycling.html">
+                                        <div
+                                            class="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                                            <i data-lucide="recycle" class="h-4 w-4 text-emerald-500"></i> Recycling
+                                        </div>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Closed-loop EPA
+                                            compliance.</p>
+                                    </a>
+                                    <a href="../pages/fleet.html"
+                                        class="nav-link block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors "
+                                        data-page="fleet.html">
+                                        <div
+                                            class="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                                            <i data-lucide="truck" class="h-4 w-4 text-emerald-500"></i> Fleet Solutions
+                                        </div>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">B2B commercial
+                                            programs.
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="../pages/pricing.html"
+                            class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                            data-page="pricing.html">Pricing</a>
+                        <a href="../pages/contact.html"
+                            class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                            data-page="contact.html">Contact</a>
+                        <a href="../pages/dashboard/index.html"
+                            class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                            data-page="dashboard/index.html">Dashboard</a>
                     </div>
+                </div>
 
-                    <a href="../pages/pricing.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
-                        data-page="pricing.html">Pricing</a>
-                    <a href="../pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
-                        data-page="contact.html">Contact</a>
-
+                <!-- Desktop Action Buttons (Right) -->
+                <div class="hidden lg:flex items-center justify-end lg:w-80 gap-4">
                     <!-- Tools -->
-                    <div
-                        class="flex items-center gap-1 sm:gap-2 ms-2 sm:ms-4 border-s border-slate-200 dark:border-slate-700 ps-2 sm:ps-4">
+                    <div class="flex items-center gap-1 sm:gap-2">
                         <button id="theme-toggle"
                             class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
                             title="Toggle Theme">
@@ -139,8 +152,17 @@
                         </button>
                     </div>
 
-                    <a href="../pages/dashboard/index.html"
-                        class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-emerald-500/30 hover:-translate-y-0.5">Dashboard</a>
+                    <!-- Auth Buttons -->
+                    <div class="flex items-center gap-3 border-s border-slate-200 dark:border-slate-700 ps-4">
+                        <a href="login.html"
+                            class="px-5 py-2 text-sm font-semibold rounded-full border border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all duration-300 whitespace-nowrap">
+                            Login
+                        </a>
+                        <a href="login.html#signup"
+                            class="px-5 py-2 text-sm font-semibold rounded-full bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
+                            Sign Up
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -209,8 +231,20 @@
                 <a href="../pages/contact.html" class="nav-link nav-item hover:text-emerald-500 transition-colors"
                     data-page="contact.html">Contact</a>
                 <a href="../pages/dashboard/index.html"
-                    class="nav-link text-emerald-600 dark:text-emerald-400 font-bold"
-                    data-page="dashboard/index.html">Login to Dashboard</a>
+                    class="nav-link nav-item hover:text-emerald-500 transition-colors"
+                    data-page="dashboard/index.html">Dashboard</a>
+
+                <!-- Mobile Auth Buttons -->
+                <div class="flex flex-col gap-3 pt-4 border-t border-slate-200 dark:border-slate-700/50 mt-4">
+                    <a href="login.html"
+                        class="flex items-center justify-center w-full py-2.5 text-center text-sm font-semibold rounded-full border border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all duration-300">
+                        Login
+                    </a>
+                    <a href="login.html#signup"
+                        class="flex items-center justify-center w-full py-2.5 text-center text-sm font-semibold rounded-full bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+                        Sign Up
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -246,7 +280,7 @@
             <div
                 class="bg-emerald-50 dark:bg-slate-800 rounded-3xl p-5 sm:p-8 border-2 border-emerald-500 shadow-xl relative transform md:-translate-y-4">
                 <div
-                    class="absolute -top-4 start-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                    class="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     Most Popular</div>
                 <h3 class="text-2xl font-bold mb-2 break-words">Fleet Pro</h3>
                 <p class="text-slate-500 mb-6 text-sm">Full lifecycle management and EPA compliance tracking.</p>
@@ -334,86 +368,207 @@
                 </tbody>
             </table>
         </div>
-    </div> <!-- Page Navigation -->
-    <section class="py-12 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-between items-stretch"> <!-- Previous Link -->
-                <!-- Next Link -->
-                <a href="contact.html"
-                    class="flex-1 group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:-translate-y-1 overflow-hidden block">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-l from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="relative flex items-center justify-between h-full">
-                        <div class="flex items-center gap-4 w-full justify-end text-end">
-                            <div class="text-end">
-                                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Next
-                                </div>
-                                <h4
-                                    class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                                    Contact</h4>
-                                <p class="text-sm text-slate-500 hidden md:block mt-1">Get in touch with our team</p>
-                            </div>
-                            <div
-                                class="h-10 w-10 shrink-0 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                                <i data-lucide="arrow-right" class="h-5 w-5 rtl:rotate-180"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+    </div>
     <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400">
+        <!-- Main Footer Grid -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
 
-
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../assets/js/main.js"></script>
-    <footer class="bg-slate-900 border-t border-slate-800 pt-20 pb-10 text-center md:text-start">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-1 md:col-span-1">
-                    <a href="../index.html" class="flex justify-center md:justify-start items-center gap-2 mb-6">
-                        <i data-lucide="droplet" class="text-emerald-500 h-8 w-8"></i>
-                        <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white">Eco<span
-                                class="text-emerald-500">Oil</span></span>
+                <!-- Brand Column (spans 2) -->
+                <div class="lg:col-span-2">
+                    <a href="../index.html" class="flex items-center mb-5">
+                        <img src="../assets/images/logo.png" alt="EcoOil Logo" class="h-8 w-auto" />
                     </a>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Revolutionizing commercial fleet maintenance
-                        with eco-friendly mobile fluid exchange and real-time dashboard analytics.</p>
+                    <p class="text-sm leading-relaxed mb-6">Revolutionizing commercial fleet maintenance with
+                        EPA-certified mobile oil recycling, hydraulic fluid exchange, and real-time SaaS analytics for
+                        enterprise fleets nationwide.</p>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center gap-3">
+                        <a href="#" aria-label="LinkedIn"
+                            class="h-9 w-9 rounded-full bg-slate-800 hover:bg-emerald-500 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook"
+                            class="h-9 w-9 rounded-full bg-slate-800 hover:bg-emerald-500 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram"
+                            class="h-9 w-9 rounded-full bg-slate-800 hover:bg-emerald-500 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="X / Twitter"
+                            class="h-9 w-9 rounded-full bg-slate-800 hover:bg-emerald-500 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube"
+                            class="h-9 w-9 rounded-full bg-slate-800 hover:bg-emerald-500 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Company Column -->
                 <div>
-                    <h4 class="text-white font-semibold mb-6">Platform</h4>
-                    <ul class="space-y-4 text-sm text-slate-400">
-                        <li><a href="about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
-                        <li><a href="services.html" class="hover:text-emerald-500 transition-colors">Services</a></li>
-                        <li><a href="pricing.html" class="hover:text-emerald-500 transition-colors">Pricing</a></li>
-                        <li><a href="dashboard/index.html" class="hover:text-emerald-500 transition-colors">Dashboard
-                                Login</a></li>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-6">Company</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="../pages/about.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">About EcoOil</a>
+                        </li>
+                        <li><a href="../pages/services.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Our Services</a>
+                        </li>
+                        <li><a href="../pages/fleet.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Fleet
+                                Solutions</a></li>
+                        <li><a href="../pages/recycling.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Sustainability</a>
+                        </li>
+                        <li><a href="../pages/contact.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Careers</a></li>
                     </ul>
                 </div>
+
+                <!-- Quick Links Column -->
                 <div>
-                    <h4 class="text-white font-semibold mb-6">Contact</h4>
-                    <ul class="space-y-4 text-sm text-slate-400">
-                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="phone"
-                                class="h-4 w-4 shrink-0"></i> 1-800-ECO-FLUID</li>
-                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="mail"
-                                class="h-4 w-4 shrink-0"></i> contact@ecooil.com</li>
-                        <li class="flex justify-center md:justify-start items-center gap-3"><i data-lucide="map-pin"
-                                class="h-4 w-4 shrink-0"></i> 123 Green Way, TX 78701</li>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="../index.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Home</a></li>
+                        <li><a href="../pages/about.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">About</a></li>
+                        <li><a href="../pages/pricing.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Pricing</a></li>
+                        <li><a href="../pages/contact.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Contact</a></li>
+                        <li><a href="../pages/dashboard/index.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Column -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-6">Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="../pages/services.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Engine Oil
+                                Exchange</a></li>
+                        <li><a href="../pages/services.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Hydraulic
+                                Fluid</a></li>
+                        <li><a href="../pages/recycling.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Oil Recycling</a>
+                        </li>
+                        <li><a href="../pages/fleet.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Fleet
+                                Maintenance</a></li>
+                        <li><a href="../pages/dashboard/index.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">SaaS Platform</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-6">Resources</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Blog</a>
+                        </li>
+                        <li><a href="#" class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Case
+                                Studies</a></li>
+                        <li><a href="#"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Documentation</a>
+                        </li>
+                        <li><a href="#" class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Privacy
+                                Policy</a></li>
+                        <li><a href="../pages/terms.html"
+                                class="hover:text-emerald-400 hover:ps-1 transition-all duration-200">Terms &amp;
+                                Conditions</a></li>
                     </ul>
                 </div>
             </div>
-            <div
-                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between text-center md:text-start gap-4 text-sm text-slate-500">
-                <p>&copy; 2026 EcoOil Services. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+
+            <!-- Contact + Newsletter Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 pb-16 border-b border-slate-800">
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-6">Contact Information</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="h-4 w-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span>4200 Green Commerce Blvd, Suite 300<br>Houston, TX 77001, United States</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                            <a href="tel:+18009326783" class="hover:text-emerald-400 transition-colors">1-800-ECO-FLUID
+                                (1-800-326-3583)</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                            <a href="mailto:contact@ecooil.com"
+                                class="hover:text-emerald-400 transition-colors">contact@ecooil.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="clock" class="h-4 w-4 text-emerald-500 shrink-0"></i>
+                            <span>24/7 Mobile Services &bull; Mon–Fri Office: 8AM–6PM CST</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-2">Newsletter</h4>
+                    <p class="text-sm mb-5">Get fleet maintenance tips, EPA updates, and exclusive offers delivered to
+                        your inbox.</p>
+                    <form onsubmit="event.preventDefault(); showToast('Successfully subscribed!', 'success')"
+                        class="flex gap-2">
+                        <input type="email" placeholder="Enter your email" required
+                            class="flex-1 min-w-0 px-4 py-3 bg-slate-800 border border-slate-700 rounded-full text-white text-sm placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors">
+                        <button type="submit"
+                            class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 hover:-translate-y-0.5 whitespace-nowrap shrink-0">
+                            Subscribe
+                        </button>
+                    </form>
+                    <p class="text-xs text-slate-500 mt-3">No spam. Unsubscribe at any time. We respect your privacy.
+                    </p>
+                </div>
+            </div>
+
+
+
+            <!-- Bottom Footer -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-xs text-slate-500">
+                <p>&copy; 2026 EcoOil Services LLC. All rights reserved. Designed &amp; Built by <span
+                        class="text-emerald-500 font-semibold">EcoOil</span></p>
+                <div class="flex flex-wrap justify-center gap-5">
+                    <a href="#" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-300 transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-300 transition-colors">Cookie Policy</a>
+                    <a href="#" class="hover:text-slate-300 transition-colors">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

@@ -242,8 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkBase = linkPage.split('?')[0].split('#')[0].replace('.html', '');
         const linkFile = linkBase.split('/').pop();
 
-        // Ensure we don't activate main site "Home" when in dashboard, unless the link specifically includes 'dashboard'
+        // Ensure we don't activate main site "Home" when in dashboard, and vice versa
         if (isDashboardPath && !linkBase.includes('dashboard')) {
+            return;
+        }
+        if (!isDashboardPath && linkPage.includes('dashboard')) {
             return;
         }
 
