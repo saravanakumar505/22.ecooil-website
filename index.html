@@ -177,7 +177,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center justify-start lg:w-80">
                     <a href="./index.html" class="flex justify-center md:justify-start items-center">
-                        <img src="./assets/images/logo.png" alt="EcoOil Logo" class="h-8 w-auto" />
+                        <img src="./assets/images/logo.png" alt="EcoOil Logo" class="h-8 w-auto logo-default" />
+        <img src="./assets/images/logo_light.png" alt="EcoOil Logo" class="h-8 w-auto logo-light" />
                     </a>
                 </div>
 
@@ -290,11 +291,11 @@
                     <!-- Auth Buttons -->
                     <div class="flex items-center gap-3 border-s border-slate-200 dark:border-slate-700 ps-4">
                         <a href="./pages/login.html"
-                            class="px-5 py-2 text-sm font-semibold rounded-full border border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all duration-300 whitespace-nowrap">
+                            class="btn-cta-outline px-5 py-2 text-sm whitespace-nowrap">
                             Login
                         </a>
                         <a href="./pages/login.html#signup"
-                            class="px-5 py-2 text-sm font-semibold rounded-full bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
+                            class="btn-cta-primary px-5 py-2 text-sm whitespace-nowrap">
                             Sign Up
                         </a>
                     </div>
@@ -372,11 +373,11 @@
                 <!-- Mobile Auth Buttons -->
                 <div class="flex flex-col gap-3 pt-4 border-t border-slate-200 dark:border-slate-700/50 mt-4">
                     <a href="./pages/login.html"
-                        class="flex items-center justify-center w-full py-2.5 text-center text-sm font-semibold rounded-full border border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all duration-300">
+                        class="btn-cta-outline w-full py-2.5 text-sm">
                         Login
                     </a>
                     <a href="./pages/login.html#signup"
-                        class="flex items-center justify-center w-full py-2.5 text-center text-sm font-semibold rounded-full bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+                        class="btn-cta-primary w-full py-2.5 text-sm">
                         Sign Up
                     </a>
                 </div>
@@ -432,13 +433,7 @@
 
                     <!-- Buttons -->
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <a href="pages/pricing.html"
-                            class="relative group overflow-hidden bg-gradient-to-r from-emerald-500 to-green-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:-translate-y-1">
-                            <span class="relative z-10">Book Service Now</span>
-                            <div
-                                class="absolute inset-0 h-full w-full bg-gradient-to-r from-green-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            </div>
-                        </a>
+                        <a href="pages/pricing.html" class="btn-cta-primary text-lg px-8 py-4 text-center">Book Service Now</a>
                         <a href="#features"
                             class="bg-white/50 dark:bg-slate-800/50 hover:bg-white/80 dark:hover:bg-slate-800/80 backdrop-blur-md text-slate-800 dark:text-white border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full font-bold text-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2 group">
                             <i data-lucide="play-circle"
@@ -514,11 +509,10 @@
                         <!-- Stat 1 -->
                         <div class="flex flex-col items-center justify-center">
                             <div
-                                class="text-4xl sm:text-5xl font-display font-extrabold text-slate-900 dark:text-white mb-2 flex items-center">
+                                class="text-4xl sm:text-5xl font-display font-extrabold text-white mb-2 flex items-center">
                                 <span class="counter-val" data-target="5">0</span>k+
                             </div>
-                            <div
-                                class="text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 uppercase tracking-widest font-bold">
+                            <div class="text-xs sm:text-sm  text-emerald-400 uppercase tracking-widest font-bold">
                                 Services Completed</div>
                         </div>
 
@@ -849,10 +843,7 @@
             </div>
 
             <div class="text-center mt-12">
-                <a href="pages/dashboard/index.html"
-                    class="inline-flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 sm:px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:-translate-y-1">
-                    Explore the Dashboard Live <i data-lucide="arrow-right" class="h-5 w-5 rtl:rotate-180"></i>
-                </a>
+                <a href="pages/dashboard/index.html" class="btn-cta-primary px-5 sm:px-8 py-4">Explore the Dashboard Live <i data-lucide="arrow-right" class="h-5 w-5 rtl:rotate-180"></i></a>
             </div>
         </div>
     </section>
@@ -900,7 +891,7 @@
                         </ul>
                     </div>
                     <a href="pages/contact.html"
-                        class="w-full py-3 text-center rounded-full border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all duration-300">Get
+                        class="btn-cta-outline w-full py-3 text-sm sm:text-base">Get
                         Started</a>
                 </div>
 
@@ -937,7 +928,7 @@
                         </ul>
                     </div>
                     <a href="pages/contact.html"
-                        class="w-full py-3 text-center rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold transition-all duration-300 shadow-md shadow-emerald-500/20 hover:shadow-lg">Start
+                        class="btn-cta-primary w-full py-3 text-sm sm:text-base">Start
                         Free Trial</a>
                 </div>
 
@@ -970,7 +961,7 @@
                         </ul>
                     </div>
                     <a href="pages/contact.html"
-                        class="w-full py-3 text-center rounded-full border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all duration-300">Get
+                        class="btn-cta-outline w-full py-3 text-sm sm:text-base">Get
                         Started</a>
                 </div>
 
@@ -1002,7 +993,7 @@
                         </ul>
                     </div>
                     <a href="pages/contact.html"
-                        class="w-full py-3 text-center rounded-full border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all duration-300">Contact
+                        class="btn-cta-outline w-full py-3 text-sm sm:text-base">Contact
                         Sales</a>
                 </div>
             </div>
@@ -1065,8 +1056,8 @@
                 <!-- Brand Column (spans 2) -->
                 <div class="lg:col-span-2">
                     <a href="./index.html" class="flex items-center mb-5">
-                        <img src="./assets/images/logo.png" alt="EcoOil Logo" class="h-8 w-auto" />
-                    </a>
+            <img src="./assets/images/logo_light.png" alt="EcoOil Logo" class="h-8 w-auto" />
+        </a>
                     <p class="text-sm leading-relaxed mb-6">Revolutionizing commercial fleet maintenance with
                         EPA-certified mobile oil recycling, hydraulic fluid exchange, and real-time SaaS analytics for
                         enterprise fleets nationwide.</p>
@@ -1228,7 +1219,7 @@
                         <input type="email" placeholder="Enter your email" required
                             class="flex-1 min-w-0 px-4 py-3 bg-slate-800 border border-slate-700 rounded-full text-white text-sm placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors">
                         <button type="submit"
-                            class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 hover:-translate-y-0.5 whitespace-nowrap shrink-0">
+                            class="btn-cta-primary px-6 py-3 text-sm whitespace-nowrap shrink-0">
                             Subscribe
                         </button>
                     </form>

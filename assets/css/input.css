@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* Consistent Primary CTA styles */
+  .btn-cta-primary {
+    @apply inline-flex items-center justify-center px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-bold text-white bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 rounded-full border border-transparent shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300 whitespace-nowrap;
+  }
+  
+  .btn-cta-outline {
+    @apply inline-flex items-center justify-center px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-bold text-emerald-500 hover:text-white bg-transparent border border-emerald-500 hover:bg-emerald-500 active:bg-emerald-600 rounded-full hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300 whitespace-nowrap;
+  }
+
+  /* Logo visibility control */
+  .logo-light {
+    @apply hidden;
+  }
+  .logo-default {
+    @apply block;
+  }
+  .dark .logo-light {
+    @apply block;
+  }
+  .dark .logo-default {
+    @apply hidden;
+  }
+  #navbar.bg-transparent .logo-light {
+    display: block !important;
+  }
+  #navbar.bg-transparent .logo-default {
+    display: none !important;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
