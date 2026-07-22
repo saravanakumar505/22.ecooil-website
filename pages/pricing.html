@@ -34,7 +34,6 @@
     class="font-sans antialiased text-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-200 overflow-x-hidden max-w-[100vw]">
 
     <!-- Navigation -->
-    <!-- Navigation -->
     <nav id="navbar"
         class="fixed w-full z-40 transition-all duration-300 bg-white/95 dark:bg-slate-900/95 text-slate-800 dark:text-white py-4 shadow-sm backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,8 +41,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center justify-start lg:w-80">
                     <a href="../index.html" class="flex justify-center md:justify-start items-center">
-                        <img src="../assets/images/logo.png" alt="EcoOil Logo" class="h-8 w-auto logo-default" />
-        <img src="../assets/images/logo_light.png" alt="EcoOil Logo" class="h-8 w-auto logo-light" />
+                        <img src="../assets/images/logo.png" alt="EcoOil Logo" class="h-8 w-auto site-logo block dark:hidden" />
+                        <img src="../assets/images/logo_dark.png" alt="EcoOil Logo" class="h-8 w-auto site-logo hidden dark:block" />
                     </a>
                 </div>
 
@@ -155,12 +154,10 @@
 
                     <!-- Auth Buttons -->
                     <div class="flex items-center gap-3 border-s border-slate-200 dark:border-slate-700 ps-4">
-                        <a href="login.html"
-                            class="btn-cta-outline px-5 py-2 text-sm whitespace-nowrap">
+                        <a href="login.html" class="btn-cta-outline px-5 py-2 text-sm whitespace-nowrap">
                             Login
                         </a>
-                        <a href="login.html#signup"
-                            class="btn-cta-primary px-5 py-2 text-sm whitespace-nowrap">
+                        <a href="login.html#signup" class="btn-cta-primary px-5 py-2 text-sm whitespace-nowrap">
                             Sign Up
                         </a>
                     </div>
@@ -237,12 +234,10 @@
 
                 <!-- Mobile Auth Buttons -->
                 <div class="flex flex-col gap-3 pt-4 border-t border-slate-200 dark:border-slate-700/50 mt-4">
-                    <a href="login.html"
-                        class="btn-cta-outline w-full py-2.5 text-sm">
+                    <a href="login.html" class="btn-cta-outline w-full py-2.5 text-sm">
                         Login
                     </a>
-                    <a href="login.html#signup"
-                        class="btn-cta-primary w-full py-2.5 text-sm">
+                    <a href="login.html#signup" class="btn-cta-primary w-full py-2.5 text-sm">
                         Sign Up
                     </a>
                 </div>
@@ -256,68 +251,74 @@
         <p class="text-xl text-slate-600 dark:text-slate-400 mb-16">Simple plans designed to scale with your operations.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto text-start">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto text-start items-stretch">
             <!-- Basic Plan -->
             <div
-                class="bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 transition-colors shadow-sm">
-                <h3 class="text-2xl font-bold mb-2 break-words">Pay-as-you-go</h3>
-                <p class="text-slate-500 mb-6 text-sm">Perfect for small fleets needing occasional service.</p>
-                <div class="text-4xl font-extrabold mb-6">$85<span
-                        class="text-lg text-slate-400 font-medium">/vehicle</span></div>
-                <ul class="space-y-4 mb-8">
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Standard Engine Oil Change</li>
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Fluid Disposal</li>
-                    <li class="flex gap-2 text-slate-400"><i data-lucide="x" class="mt-1 h-5 w-5 shrink-0"></i> Digital
-                        Certificates</li>
-                </ul>
+                class="bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 transition-all duration-300 shadow-sm flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2 break-words">Pay-as-you-go</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Perfect for small fleets needing occasional service.</p>
+                    <div class="text-4xl font-extrabold mb-6">$85<span
+                            class="text-lg text-slate-400 font-medium">/vehicle</span></div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Standard Engine Oil Change</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Fluid Disposal</li>
+                        <li class="flex gap-2 text-slate-400"><i data-lucide="x" class="mt-1 h-5 w-5 shrink-0"></i> Digital
+                            Certificates</li>
+                    </ul>
+                </div>
                 <button
-                    class="w-full py-3 rounded-full border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">Get
+                    class="w-full py-3 rounded-full border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors mt-auto">Get
                     Started</button>
             </div>
 
             <!-- Pro Plan -->
             <div
-                class="bg-emerald-50 dark:bg-slate-800 rounded-3xl p-5 sm:p-8 border-2 border-emerald-500 shadow-xl relative transform md:-translate-y-4">
+                class="bg-emerald-50 dark:bg-slate-800 rounded-3xl p-5 sm:p-8 border-2 border-emerald-500 shadow-xl relative hover:shadow-2xl transition-all duration-300 flex flex-col justify-between h-full">
                 <div
                     class="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     Most Popular</div>
-                <h3 class="text-2xl font-bold mb-2 break-words">Fleet Pro</h3>
-                <p class="text-slate-500 mb-6 text-sm">Full lifecycle management and EPA compliance tracking.</p>
-                <div class="text-4xl font-extrabold mb-6">$199<span
-                        class="text-lg text-slate-400 font-medium">/mo</span></div>
-                <ul class="space-y-4 mb-8">
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Unlimited Platform Access</li>
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Discounted Service Rates</li>
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Automated Scheduling</li>
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Digital EPA Certificates</li>
-                </ul>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2 break-words">Fleet Pro</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Full lifecycle management and EPA compliance tracking.</p>
+                    <div class="text-4xl font-extrabold mb-6">$199<span
+                            class="text-lg text-slate-400 font-medium">/mo</span></div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Unlimited Platform Access</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Discounted Service Rates</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Automated Scheduling</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Digital EPA Certificates</li>
+                    </ul>
+                </div>
                 <button
-                    class="w-full py-3 rounded-full bg-emerald-500 text-white font-bold hover:bg-emerald-600 transition-colors shadow-lg">Start
+                    class="w-full py-3 rounded-full bg-emerald-500 text-white font-bold hover:bg-emerald-600 transition-colors shadow-lg mt-auto">Start
                     Free Trial</button>
             </div>
 
             <!-- Enterprise Plan -->
             <div
-                class="bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 transition-colors shadow-sm">
-                <h3 class="text-2xl font-bold mb-2 break-words">Enterprise</h3>
-                <p class="text-slate-500 mb-6 text-sm">For regional fleets with 500+ vehicles.</p>
-                <div class="text-4xl font-extrabold mb-6">Custom</div>
-                <ul class="space-y-4 mb-8">
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Everything in Pro</li>
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Dedicated Account Manager</li>
-                    <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
-                        Custom API Integrations</li>
-                </ul>
+                class="bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 transition-all duration-300 shadow-sm flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2 break-words">Enterprise</h3>
+                    <p class="text-slate-500 mb-6 text-sm">For regional fleets with 500+ vehicles.</p>
+                    <div class="text-4xl font-extrabold mb-6">Custom</div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Everything in Pro</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Dedicated Account Manager</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="text-emerald-500 mt-1 h-5 w-5 shrink-0"></i>
+                            Custom API Integrations</li>
+                    </ul>
+                </div>
                 <button
-                    class="w-full py-3 rounded-full border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">Contact
+                    class="w-full py-3 rounded-full border border-emerald-500 text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors mt-auto">Contact
                     Sales</button>
             </div>
         </div>
@@ -379,8 +380,8 @@
                 <!-- Brand Column (spans 2) -->
                 <div class="lg:col-span-2">
                     <a href="../index.html" class="flex items-center mb-5">
-            <img src="../assets/images/logo_light.png" alt="EcoOil Logo" class="h-8 w-auto" />
-        </a>
+                        <img src="../assets/images/logo_dark.png" alt="EcoOil Logo" class="h-8 w-auto site-logo" />
+                    </a>
                     <p class="text-sm leading-relaxed mb-6">Revolutionizing commercial fleet maintenance with
                         EPA-certified mobile oil recycling, hydraulic fluid exchange, and real-time SaaS analytics for
                         enterprise fleets nationwide.</p>
@@ -541,8 +542,7 @@
                         class="flex gap-2">
                         <input type="email" placeholder="Enter your email" required
                             class="flex-1 min-w-0 px-4 py-3 bg-slate-800 border border-slate-700 rounded-full text-white text-sm placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors">
-                        <button type="submit"
-                            class="btn-cta-primary px-6 py-3 text-sm whitespace-nowrap shrink-0">
+                        <button type="submit" class="btn-cta-primary px-6 py-3 text-sm whitespace-nowrap shrink-0">
                             Subscribe
                         </button>
                     </form>
